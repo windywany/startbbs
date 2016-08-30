@@ -60,7 +60,7 @@ class topic_m extends SB_Model
 	/**/
 	public function get_topics_list_by_node_ids ($limit, $node_ids)
 	{
-		$sql="SELECT * from ( SELECT `a`.`topic_id`, `a`.`title`, `a`.`node_id`, `a`.`updatetime`, `b`.`uid`, `b`.`username` FROM (`{$this->db->dbprefix}topics` a) LEFT JOIN `{$this->db->dbprefix}users` b ON `b`.`uid` = `a`.`uid` WHERE `node_id` IN ({$node_ids}) ORDER BY `a`.`updatetime` DESC LIMIT {$limit}) alias GROUP BY node_id";
+		$sql="SELECT `a`.`topic_id`, `a`.`title`, `a`.`node_id`, `a`.`updatetime`, `b`.`uid`, `b`.`username` FROM (`{$this->db->dbprefix}topics` a) LEFT JOIN `{$this->db->dbprefix}users` b ON `b`.`uid` = `a`.`uid` WHERE `node_id` IN ({$node_ids}) ORDER BY `a`.`updatetime` DESC LIMIT {$limit}";
 $query=$this->db->query($sql);
 		//备用
 		//$this->db->select('a.topic_id,a.title,a.node_id,a.updatetime,b.uid,b.username');
